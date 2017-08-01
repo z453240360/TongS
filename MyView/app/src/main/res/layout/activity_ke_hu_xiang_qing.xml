@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_ke_hu_xiang_qing"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dongdong.myview.activity.KeHuXiangQingActivity">
+
+
+    <RadioGroup
+        android:id="@+id/mRg_kehuXiangqing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/mRb_shouye_kehuxiangqing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/jichuxinxix_02"
+            android:gravity="center"
+            android:tag="0"
+            android:text="基础信息"
+            android:textColor="@drawable/radiobuttoncolor"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/mRb_xiaoxi_kehuxiangqing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/zhuangtaichaxun"
+            android:gravity="center"
+            android:tag="1"
+            android:text="状态查询"
+            android:textColor="@drawable/radiobuttoncolor2"
+            android:textSize="15sp" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/mFl_kehuxiangqing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/mRg_kehuXiangqing" />
+
+
+
+</RelativeLayout>

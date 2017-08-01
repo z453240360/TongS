@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/mTxt_gerenxinxi"
+        android:text="个人信息"
+        android:textSize="22dp"
+        android:textColor="#126cb0"
+        android:drawableLeft="@mipmap/gerenxixni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        >
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/mTxt_jiekuan"
+            android:text="借款人 "
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/mTxt_jiekuanname"
+            android:text="——"
+            android:layout_marginLeft="30dp"
+            android:layout_alignBottom="@id/mTxt_jiekuan"
+            android:layout_toRightOf="@id/mTxt_jiekuan"
+            android:textColor="#8b8b8b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/mTxt_jiekuan"
+            android:background="#8b8b8b"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        >
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/mTxt_jiekuan2"
+            android:text="身份证号"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/mTxt_jiekuanname2"
+            android:text="——"
+            android:layout_marginLeft="30dp"
+            android:layout_alignBottom="@id/mTxt_jiekuan2"
+            android:layout_toRightOf="@id/mTxt_jiekuan2"
+            android:textColor="#8b8b8b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/mTxt_jiekuan2"
+            android:background="#8b8b8b"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

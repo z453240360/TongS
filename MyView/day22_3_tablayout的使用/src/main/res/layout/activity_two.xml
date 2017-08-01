@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_two"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.qf.hello.day22_3_tablayout.TwoActivity">
+
+    <!--
+    代码中的set方法在布局标签中一般都会拥有对应的属性
+    使用这些属性时注意：因这些属性都是属于design包中的TabLayout的第三方属性
+    使用时需先声明命名空间，通过声明的命名空间引用这些第三方属性即可
+    -->
+    <!--<android.support.design.widget.TabLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:tabMode="fixed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tablayout"
+        android:layout_alignParentBottom="true"
+        />-->
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tablayout"
+        android:layout_alignParentBottom="true"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/pager"
+        android:layout_above="@+id/tablayout"
+        ></android.support.v4.view.ViewPager>
+</RelativeLayout>
