@@ -1,0 +1,408 @@
+
+请求参数，请求参数以json格式发送，存放在body中，另外，header里面需要存放一下信息
+
+X-OSVersion=5.0.1, ---移动系统版本号
+X-Platform=Android, ---移动平台，iOS或者Android
+X-PackageName=com.youxuan.iwifi, ---应用的包名或者bundleId
+X-Longitude=121.3456,客户端目前位置的经度，如果没有获取到设置为空
+X-Latitude=23.23122, 客户端目前的纬度，如果没有获取到设置为空
+X-DeviceModel=MI1---手机型号
+X-Address=上海市浦东新区，-- 客户端目前的详细地址，如果没有获取到设置为空。
+X-Timestamp =  时间戳验签
+-----------------------------------------------------------------------------------------
+X-SignInfo = 验签信息
+X-Build=100, app build 内部版本号
+X-Version=1.2.1, ----app版本号
+X-Channel=iwifi-offical, ---渠道名称
+X-Token=e34ac9874, ---登录或者注册后获取到的token数据
+X-APIVersion=1.0,API的版本号，默认是1.0，如果发生变化，可以设置为2.0，针对不同的API接口，该值可以发生变化
+
+请求验签：
+		timestamp = request.getHeader("X-Timestamp") 
+		signInfo = request.getHeader("X-SignInfo") 
+		API_KEY=pmjWn6kLz6mcQf2N SECURITY_KEY=1cLLub8UOLvlT69ITSBFgHX50f9T4rOG
+		SECURITY_KEY=1cLLub8UOLvlT69ITSBFgHX50f9T4rOG
+加密规则：
+  orgiStr = SECURITY_KEY + "|" + API_KEY + "|" + timestamp + "|" + SECURITY_KEYMD5加密 
+  signStr = org.apache.commons.codec.digest.DigestUtils.md5Hex(orgiStr)
+
+  
+  
+  
+------------------------------------------------------------------------------------------------------------------
+UAT:https://appsales-uat.tsjinrong.cn/appsales-entry
+
+BaseURL = "https://appsales-uat.tsjinrong.cn/" ;
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+                                               注册登陆
+
+请求地址： appsales-entry/login/sendVerifyCode
+
+请求方式： post
+
+请求参数：
+
+		数据类型   			 参数名称
+		
+		String     			 phoneNo       
+
+请求头信息:
+	X-Version=1.2.1, ----app版本号
+	X-OSVersion=5.0.1, ---移动系统版本号
+	X-Platform=Android, ---移动平台，iOS或者Android
+	X-PackageName=com.youxuan.iwifi, ---应用的包名或者bundleId
+	X-Channel=iwifi-offical, ---渠道名称
+	X-Longitude=121.3456,客户端目前位置的经度，如果没有获取到设置为空
+	X-Latitude=23.23122, 客户端目前的纬度，如果没有获取到设置为空
+	X-Token=e34ac9874, ---登录或者注册后获取到的token数据
+	X-DeviceModel=MI1---手机型号
+	X-APIVersion=1.0,API的版本号，默认是1.0，如果发生变化，可以设置为2.0，针对不同的API接口，该值可以发生变化
+	X-Address=上海市浦东新区，-- 客户端目前的详细地址，如果没有获取到设置为空。
+	X-Timestamp =  时间戳验签
+	X-SignInfo = 验签信息
+	X-Build=100, app build 内部版本号
+		
+返回结果：
+		{
+			"code": "1",
+			"data":"123456" //测试环境返回前端验证码，生产环境不返回
+			"massage":""
+		}
+
+		
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>		
+												登陆
+		
+请求地址： appsales-entry/login/checkVerifyCode
+
+请求方式： post
+
+请求参数：
+
+		数据类型   			 参数名称
+		
+		String     			 phoneNo   
+		String				 verifyCode
+
+请求头信息:
+	X-Version=1.2.1, ----app版本号
+	X-OSVersion=5.0.1, ---移动系统版本号
+	X-Platform=Android, ---移动平台，iOS或者Android
+	X-PackageName=com.youxuan.iwifi, ---应用的包名或者bundleId
+	X-Channel=iwifi-offical, ---渠道名称-----------  ???????????
+	X-Longitude=121.3456,客户端目前位置的经度，如果没有获取到设置为空
+	X-Latitude=23.23122, 客户端目前的纬度，如果没有获取到设置为空
+	X-Token=e34ac9874, ---登录或者注册后获取到的token数据
+	X-DeviceModel=MI1---手机型号
+	X-APIVersion=1.0,API的版本号，默认是1.0，如果发生变化，可以设置为2.0，针对不同的API接口，该值可以发生变化
+	X-Address=上海市浦东新区，-- 客户端目前的详细地址，如果没有获取到设置为空。
+	X-Timestamp =  时间戳验签
+	X-SignInfo = 验签信息
+	X-Build=100, app build 内部版本号
+	
+	
+		
+返回结果：
+		{
+			"code": "1",
+			"data":{
+						"token":""
+						"userCode":""
+						"phoneNo":""
+					}
+			"massage":""
+		}		
+		
+		
+		
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+										查询用户信息
+
+请求地址： appsales-entry/applyInfo/registApply
+请求方式： post
+
+请求参数：
+		数据类型   			 参数名称	
+		String     			 userName(用户姓名：中文)   
+		String				 idCard  （身份证号码）
+		
+请求头信息:
+	X-Version=1.2.1, ----app版本号
+	X-OSVersion=5.0.1, ---移动系统版本号
+	X-Platform=Android, ---移动平台，iOS或者Android
+	X-PackageName=com.youxuan.iwifi, ---应用的包名或者bundleId
+	X-Channel=iwifi-offical, ---渠道名称-----------  ???????????
+	X-Longitude=121.3456,客户端目前位置的经度，如果没有获取到设置为空
+	X-Latitude=23.23122, 客户端目前的纬度，如果没有获取到设置为空
+	X-Token=e34ac9874, ---登录或者注册后获取到的token数据
+	X-DeviceModel=MI1---手机型号
+	X-APIVersion=1.0,API的版本号，默认是1.0，如果发生变化，可以设置为2.0，针对不同的API接口，该值可以发生变化
+	X-Address=上海市浦东新区，-- 客户端目前的详细地址，如果没有获取到设置为空。
+	X-Timestamp =  时间戳验签
+	X-SignInfo = 验签信息
+	X-Build=100, app build 内部版本号
+			
+返回结果：
+		{
+			"code": "1",
+			"data":{
+						"code":""      //审批返回code
+						"detail":""		// 审批相应描述
+						"success":""	//审批调用是否成功
+					}
+			"massage":""
+		}		
+				
+		
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+									查询用户基本信息
+									
+请求地址： appsales-entry/applyInfo/findUserBaseInfoByCode
+请求方式： post
+
+请求参数：
+		数据类型   			 参数名称	
+		String     			 userCode(用户code)   
+		
+请求头信息:
+	X-Version=1.2.1, ----app版本号
+	X-OSVersion=5.0.1, ---移动系统版本号
+	X-Platform=Android, ---移动平台，iOS或者Android
+	X-PackageName=com.youxuan.iwifi, ---应用的包名或者bundleId
+	X-Channel=iwifi-offical, ---渠道名称-----------  ???????????
+	X-Longitude=121.3456,客户端目前位置的经度，如果没有获取到设置为空
+	X-Latitude=23.23122, 客户端目前的纬度，如果没有获取到设置为空
+	X-Token=e34ac9874, ---登录或者注册后获取到的token数据
+	X-DeviceModel=MI1---手机型号
+	X-APIVersion=1.0,API的版本号，默认是1.0，如果发生变化，可以设置为2.0，针对不同的API接口，该值可以发生变化
+	X-Address=上海市浦东新区，-- 客户端目前的详细地址，如果没有获取到设置为空。
+	X-Timestamp =  时间戳验签
+	X-SignInfo = 验签信息
+	X-Build=100, app build 内部版本号
+			
+返回结果：
+		{
+			"code": "1",
+			"data":{
+						"id":""      //
+						"userCode":""		// userCode 是否相同
+						"userName":""	//
+					}
+			"massage":""
+		}		
+		
+		
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>		
+
+									根据userCode查询用户认证进度
+
+
+请求地址： appsales-entry/applyInfo/findScheduleByCode
+请求方式： post
+
+请求参数：
+		数据类型   			 参数名称	
+		String     			 userCode(用户code)   
+		
+请求头信息:
+	X-Version=1.2.1, ----app版本号
+	X-OSVersion=5.0.1, ---移动系统版本号
+	X-Platform=Android, ---移动平台，iOS或者Android
+	X-PackageName=com.youxuan.iwifi, ---应用的包名或者bundleId
+	X-Channel=iwifi-offical, ---渠道名称												-----------???????????
+	X-Longitude=121.3456,客户端目前位置的经度，如果没有获取到设置为空
+	X-Latitude=23.23122, 客户端目前的纬度，如果没有获取到设置为空
+	X-Token=e34ac9874, ---登录或者注册后获取到的token数据
+	X-DeviceModel=MI1---手机型号
+	X-APIVersion=1.0,API的版本号，默认是1.0，如果发生变化，可以设置为2.0，针对不同的API接口，该值可以发生变化
+	X-Address=上海市浦东新区，-- 客户端目前的详细地址，如果没有获取到设置为空。
+	X-Timestamp =  时间戳验签
+	
+	
+	X-SignInfo = 验签信息
+	X-Build=100, app build 内部版本号
+			
+返回结果：
+		{
+			"code": "1",
+			"data":{
+						"verifySchedule":""      //
+						"idVerifyFinish":""		// 
+						"userName":""	//
+					}
+			"massage":""
+		}			
+		
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>		
+
+									根据用户状态查询客户
+
+
+请求地址： appsales-entry/applyInfo/findApplyInfoByStatus
+请求方式： post
+
+请求参数：
+		数据类型   			 参数名称	
+		int     			 status  (状态)   
+	    int     			 page  (页) 
+		int     			 rows  (状态) 
+		
+
+		status      101:   	待处理
+					102:	进件拒绝
+					103:	进件通过
+					104:	进件取消
+					201:	认证完成
+					301:	审批中
+					302:	审批拒绝
+					303:	审批通过
+					401:	补充材料完成
+					501:	放款中
+					502:	放款失败
+					503:	放款成功
+					601:	案件取消
+					
+请求头信息:
+	X-Version=1.2.1, ----app版本号
+	X-OSVersion=5.0.1, ---移动系统版本号
+	X-Platform=Android, ---移动平台，iOS或者Android
+	X-PackageName=com.youxuan.iwifi, ---应用的包名或者bundleId
+	X-Channel=iwifi-offical, ---渠道名称-----------  ???????????
+	X-Longitude=121.3456,客户端目前位置的经度，如果没有获取到设置为空
+	X-Latitude=23.23122, 客户端目前的纬度，如果没有获取到设置为空
+	X-Token=e34ac9874, ---登录或者注册后获取到的token数据
+	X-DeviceModel=MI1---手机型号
+	X-APIVersion=1.0,API的版本号，默认是1.0，如果发生变化，可以设置为2.0，针对不同的API接口，该值可以发生变化
+	X-Address=上海市浦东新区，-- 客户端目前的详细地址，如果没有获取到设置为空。
+	X-Timestamp =  时间戳验签
+	X-SignInfo = 验签信息
+	X-Build=100, app build 内部版本号
+			
+返回结果：
+
+		{
+			"code": "1",
+			"data":{
+						[
+							{
+								"userCode":""      //用户编码
+								"applyAmt":""		// 申请金额
+								"userName":""	//	用户姓名
+								"applyDate":""	//	申请时间
+							}				
+						]	
+					}
+			"massage":""
+		}			
+				
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>		
+
+									试算接口 ---获取试算参数
+
+
+请求地址： appsales-entry/calcContractInfo/findCalcParameter
+请求方式： post
+
+请求参数：
+		数据类型   			 参数名称	
+		无
+					
+请求头信息:
+	X-Version=1.2.1, ----app版本号
+	X-OSVersion=5.0.1, ---移动系统版本号
+	X-Platform=Android, ---移动平台，iOS或者Android
+	X-PackageName=com.youxuan.iwifi, ---应用的包名或者bundleId
+	X-Channel=iwifi-offical, ---渠道名称-----------  ???????????
+	X-Longitude=121.3456,客户端目前位置的经度，如果没有获取到设置为空
+	X-Latitude=23.23122, 客户端目前的纬度，如果没有获取到设置为空
+	X-Token=e34ac9874, ---登录或者注册后获取到的token数据
+	X-DeviceModel=MI1---手机型号
+	X-APIVersion=1.0,API的版本号，默认是1.0，如果发生变化，可以设置为2.0，针对不同的API接口，该值可以发生变化
+	X-Address=上海市浦东新区，-- 客户端目前的详细地址，如果没有获取到设置为空。
+	X-Timestamp =  时间戳验签
+	X-SignInfo = 验签信息
+	X-Build=100, app build 内部版本号
+			
+返回结果：
+
+		{
+			"code": "1",
+			"data":{
+						{
+							"periods":[12,18,24]      //
+							"productlnfos":{
+												"Elite2.0":""
+												"Elite2.2":""
+											}
+						}				
+							
+					}
+			"massage":""
+		}	
+		
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>		
+
+									试算接口 ---试算
+
+
+请求地址： appsales-entry/calcContractInfo/calcContractInfoData
+请求方式： post
+
+请求参数：
+		数据类型   			 参数名称	
+		String				 productCode
+		int					 period
+		int                  applyAmt
+					
+请求头信息:
+	X-Version=1.2.1, ----app版本号
+	X-OSVersion=5.0.1, ---移动系统版本号
+	X-Platform=Android, ---移动平台，iOS或者Android
+	X-PackageName=com.youxuan.iwifi, ---应用的包名或者bundleId
+	X-Channel=iwifi-offical, ---渠道名称-----------  ???????????
+	X-Longitude=121.3456,客户端目前位置的经度，如果没有获取到设置为空
+	X-Latitude=23.23122, 客户端目前的纬度，如果没有获取到设置为空
+	X-Token=e34ac9874, ---登录或者注册后获取到的token数据
+	X-DeviceModel=MI1---手机型号
+	X-APIVersion=1.0,API的版本号，默认是1.0，如果发生变化，可以设置为2.0，针对不同的API接口，该值可以发生变化
+	X-Address=上海市浦东新区，-- 客户端目前的详细地址，如果没有获取到设置为空。
+	X-Timestamp =  时间戳验签
+	X-SignInfo = 验签信息
+	X-Build=100, app build 内部版本号
+			
+返回结果：
+
+		{
+			"code": "1",
+			"data":{
+						{
+							"productCode":""      //产品编码
+							"period":24    //期数
+							"applyAmt":24    //申请金额
+							"contractAmt":24    //合同金额
+							"netAmt":24    //到手金额
+							"perRepayAmt":24    //每期应还金额
+						}				
+							
+					}
+			"massage":""
+		}		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
